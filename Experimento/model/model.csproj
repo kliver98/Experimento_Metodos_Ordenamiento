@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{057BCFC5-F5B5-4C27-8A85-DFADDB7E2C17}</ProjectGuid>
+    <ProjectGuid>{03D6C856-B330-4EC6-91E8-A8C7602EB18F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ExperimentoMetOrdenamiento</RootNamespace>
-    <AssemblyName>ExperimentoMetOrdenamiento</AssemblyName>
+    <RootNamespace>model</RootNamespace>
+    <AssemblyName>model</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,17 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="HeapSort.cs" />
+    <Compile Include="MergeSort.cs" />
+    <Compile Include="Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\model\model.csproj">
-      <Project>{03d6c856-b330-4ec6-91e8-a8c7602eb18f}</Project>
-      <Name>model</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
