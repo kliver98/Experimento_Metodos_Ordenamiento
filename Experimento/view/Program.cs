@@ -20,6 +20,10 @@ namespace view
         static void Main(string[] args)
         {
             Program p = new Program();
+            int size = (int)Math.Pow(10, 6);
+
+            Console.WriteLine("El merge sort con un arreglo de tamaño {0}, Se demoro {1}Ns",size ,p.model.MergeSort(size));
+            Console.WriteLine("El heap sort con un arreglo de tamaño {0}, Se demoro {1}Ns", size, p.model.HeapSort(size));
         }
     }
 }
