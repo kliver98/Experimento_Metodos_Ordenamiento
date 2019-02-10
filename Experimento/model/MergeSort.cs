@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace model
 {
-    class MergeSort
+    public class MergeSort
     {
         private void MainMerge(int[] numbers, int left, int mid, int right)
         {

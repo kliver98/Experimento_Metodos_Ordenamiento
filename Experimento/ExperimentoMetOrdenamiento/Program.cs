@@ -9,9 +9,16 @@ namespace ExperimentoMetOrdenamiento
 {
     class Program
     {
+        private Model model;
+
+        public Program()
+        {
+            model = new Model();
+        }
+
         static void Main(string[] args)
         {
-            Model p = new Model();
+            Program p = new Program();
         }
     }
 }

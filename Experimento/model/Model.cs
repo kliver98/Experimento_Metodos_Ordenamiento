@@ -12,6 +12,7 @@ namespace model
 
         private HeapSort heap;
         private MergeSort merge;
+        
 
         public Model()
         {
@@ -19,12 +20,13 @@ namespace model
             merge = new MergeSort();
         }
 
-        public long MergeSort(int[] numbers, int left, int right)
+        public long MergeSort(int size)
         {
+            int[] numbers = generateArray(size);
             long time = nanoTime();
             int[] arrC = new int[numbers.Length];
             numbers.CopyTo(arrC, 0);
-            int[] arr = merge.Sort(numbers,left,right);
+            int[] arr = merge.Sort(numbers,0,numbers.Length-1);
             if (Enumerable.SequenceEqual(arr, arrC))
             {
                 return nanoTime() - time;
@@ -32,8 +34,9 @@ namespace model
             return -1L;
         }
 
-        public long HeapSort(int[] numbers)
+        public long HeapSort(int size)
         {
+            int[] numbers = generateArray(size);
             long time = nanoTime();
             int[] arrC = new int[numbers.Length];
             numbers.CopyTo(arrC,0);
@@ -52,6 +55,17 @@ namespace model
             nano /= TimeSpan.TicksPerMillisecond;
             nano *= 100L;
             return nano;
+        }
+
+        public static int[] generateArray(int size)
+        {
+            Random random = new Random(DateTime.Now.Millisecond);
+            int[] arr = new int[size];
+            for (int i = 0; i < size; i++)
+            {
+                arr[i] = random.Next();
+            }
+            return arr;
         }
 
         static void Main(string[] args)

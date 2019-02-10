@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace model
 {
-    class HeapSort
+    public class HeapSort
     {
 
         private int heapSize;
