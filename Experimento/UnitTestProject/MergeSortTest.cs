@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using model;
 
 namespace UnitTestProject
 {
@@ -11,59 +12,59 @@ namespace UnitTestProject
     [TestClass]
     public class MergeSortTest
     {
-        public MergeSortTest()
-        {
-            //
-            // TODO: Agregar aquí la lógica del constructor
-            //
-        }
 
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Obtiene o establece el contexto de las pruebas que proporciona
-        ///información y funcionalidad para la serie de pruebas actual.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-
-        #region Atributos de prueba adicionales
-        //
-        // Puede usar los siguientes atributos adicionales conforme escribe las pruebas:
-        //
-        // Use ClassInitialize para ejecutar el código antes de ejecutar la primera prueba en la clase
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup para ejecutar el código una vez ejecutadas todas las pruebas en una clase
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Usar TestInitialize para ejecutar el código antes de ejecutar cada prueba 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup para ejecutar el código una vez ejecutadas todas las pruebas
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
+        private MergeSort merge;
 
         [TestMethod]
-        public void TestMethod1()
+        public void Initialize()
         {
-            //
-            // TODO: Agregar aquí la lógica de las pruebas
-            //
+            merge = new MergeSort();
         }
+
+        [TestMethod]
+        public void SortTest1()
+        {
+            Initialize();
+            //Generate array of length 100
+            int[] arr = Model.generateArray(Convert.ToInt16(Math.Pow(10, 2)));
+            int[] arr1 = new int[arr.Length];
+            arr.CopyTo(arr1, 0);
+            Array.Sort(arr1);
+            //Sorting by the algorithm
+            int[] arr2 = merge.Sort(arr,0,arr.Length-1);
+            //Assert that verifies if both arr1 and arr2 are equal (their values at every position)
+            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(arr1, arr2));
+        }
+
+        [TestMethod]
+        public void SortTest2()
+        {
+            Initialize();
+            //Generate array of length 10000
+            int[] arr = Model.generateArray(Convert.ToInt16(Math.Pow(10, 4)));
+            int[] arr1 = new int[arr.Length];
+            arr.CopyTo(arr1, 0);
+            Array.Sort(arr1);
+            //Sorting by the algorithm
+            int[] arr2 = merge.Sort(arr, 0, arr.Length - 1);
+            //Assert that verifies if both arr1 and arr2 are equal (their values at every position)
+            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(arr1, arr2));
+        }
+
+        [TestMethod]
+        public void SortTest3()
+        {
+            Initialize();
+            //Generate array of length 1000000
+            int[] arr = Model.generateArray(Convert.ToInt32(Math.Pow(10, 6)));
+            int[] arr1 = new int[arr.Length];
+            arr.CopyTo(arr1, 0);
+            Array.Sort(arr1);
+            //Sorting by the algorithm
+            int[] arr2 = merge.Sort(arr,0,arr.Length-1);
+            //Assert that verifies if both arr1 and arr2 are equal (their values at every position)
+            Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(arr1, arr2));
+        }
+
     }
 }

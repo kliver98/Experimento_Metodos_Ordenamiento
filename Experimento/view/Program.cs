@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using model;
 
-namespace ExperimentoMetOrdenamiento
+namespace view
 {
     class Program
     {
+
         private Model model;
 
         public Program()

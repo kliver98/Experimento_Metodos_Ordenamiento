@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace model
 {
+    //Implementation taked it from https://simpledevcode.wordpress.com/2014/11/25/heapsort-c-tutorial/
     public class HeapSort
     {
 

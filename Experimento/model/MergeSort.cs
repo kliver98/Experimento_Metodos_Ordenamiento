@@ -6,45 +6,55 @@ using System.Threading.Tasks;
 
 namespace model
 {
+    //Implementation taked it from http://csharpexamples.com/c-merge-sort-algorithm-implementation/
     public class MergeSort
     {
-        private void MainMerge(int[] numbers, int left, int mid, int right)
+        private void Merge(int[] numbers, int left, int mid, int right)
         {
-            int[] temp = new int[25];
-            int i, eol, num, pos;
-            eol = (mid - 1);
-            pos = left;
-            num = (right - left + 1);
-            while ((left <= eol) && (mid <= right))
+
+            int[] leftArray = new int[mid - left + 1];
+            int[] rightArray = new int[right - mid];
+
+            Array.Copy(numbers, left, leftArray, 0, mid - left + 1);
+            Array.Copy(numbers, mid + 1, rightArray, 0, right - mid);
+
+            int i = 0;
+            int j = 0;
+            for (int k = left; k < right + 1; k++)
             {
-                if (numbers[left] <= numbers[mid])
-                    temp[pos++] = numbers[left++];
+                if (i == leftArray.Length)
+                {
+                    numbers[k] = rightArray[j];
+                    j++;
+                }
+                else if (j == rightArray.Length)
+                {
+                    numbers[k] = leftArray[i];
+                    i++;
+                }
+                else if (leftArray[i] <= rightArray[j])
+                {
+                    numbers[k] = leftArray[i];
+                    i++;
+                }
                 else
-                    temp[pos++] = numbers[mid++];
-            }
-
-            while (left <= eol)
-                temp[pos++] = numbers[left++];
-
-            while (mid <= right)
-                temp[pos++] = numbers[mid++];
-
-            for (i = 0; i < num; i++)
-            {
-                numbers[right] = temp[right];
-                right--;
+                {
+                    numbers[k] = rightArray[j];
+                    j++;
+                }
             }
         }
 
         public int[] Sort(int[] numbers, int left, int right)
         {
-            int mid;
-            if (right > left)
+            if (left < right)
             {
-                mid = (right + left) / 2;
-                Sort(numbers, left, mid);
-                Sort(numbers, (mid + 1), right);
-                MainMerge(numbers, left, (mid + 1), right);
+                int middle = (left + right) / 2;
+
+                Sort(numbers, left, middle);
+                Sort(numbers, middle + 1, right);
+
+                Merge(numbers, left, middle, right);
             }
             return numbers;
         }
