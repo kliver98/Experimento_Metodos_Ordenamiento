@@ -1,0 +1,11 @@
+Integrantes:
+Christian Cobo
+Chirstian Tamayo
+Joe Hernandez
+Kliver Girón
+NOTAS:
+Las pruebas unitarias, hechas en visual studio requieren Nugets que no se subierón al proyecto de github.
+Por tal razón se sube un zip, con el proyecto, que si contiene los nugets necesarios para ejecutar las pruebas unitarias.
+Esta el último commit 5 minutos despues de la hora de entrega, en github, pero solo es de esto del proyecto. Los commits
+de los documentos se hicierón antes de la hora de entrega límite.
+Gracias
